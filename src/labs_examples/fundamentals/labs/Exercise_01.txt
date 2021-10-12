@@ -3,20 +3,70 @@ Fundamentals Exercise 1: CLI
 
      1. Navigate to CodingNomads folder (or the space you have create for this project)
      2. Create new folder Terminal_testing
+            Jackie typed: mkdir Terminal_testing
      3. Inside of folder Terminal_testing,
          a. create 3 new .txt files all with different names
+            Jackie typed: touch test-file-1.txt test-file-2.txt test-file-3.txt
          b. print the directory path
+            Jackie typed: pwd
+                Result: C:\Users\jaque\Documents\CodingNomads\Terminal_testing
          c. list the contents of the folder
+            Jackie typed: ls -al
+                Result: drwxr-xr-x 1 jaque 197609 0 Oct 10 23:28 ./
+                        drwxr-xr-x 1 jaque 197609 0 Oct 10 23:26 ../
+                        -rw-r--r-- 1 jaque 1976]09 0 Oct 10 23:28 test-file-1.txt
+                        -rw-r--r-- 1 jaque 197609 0 Oct 10 23:28 test-file-2.txt
+                        -rw-r--r-- 1 jaque 197609 0 Oct 10 23:28 test-file-3.txt
      5. Inside of folder Terminal_testing, create a new folder
+            Jackie typed: mkdir random-folder
      6. Copy a file from Terminal_testing to the new folder
+            Jackie typed: (while in the Terminal_testing folder) cp test-file-1.txt random-folder
      7. Move a different file from Terminal_testing to the new folder
+            Jackie typed: (while in the Terminal_testing folder) mv test-file-3.txt random-folder
      8. Demonstrate removing:
          a. A file
+            Jackie typed:
+                C:\Users\jaque\Documents\CodingNomads\Terminal_testing\random-folder
+                λ rm test-file-3.txt
+                C:\Users\jaque\Documents\CodingNomads\Terminal_testing\random-folder
+                λ ls -al
+                total 4
+                drwxr-xr-x 1 jaque 197609 0 Oct 10 23:53 ./
+                drwxr-xr-x 1 jaque 197609 0 Oct 10 23:52 ../
+                -rw-r--r-- 1 jaque 197609 0 Oct 10 23:50 test-file-1.txt
          b. A folder
+            Jackie typed (I had to remove all files first):
+                C:\Users\jaque\Documents\CodingNomads\Terminal_testing\random-folder
+                λ rm test-file-1.txt
+
+                C:\Users\jaque\Documents\CodingNomads\Terminal_testing\random-folder
+                λ cd ../
+
+                C:\Users\jaque\Documents\CodingNomads\Terminal_testing
+                λ rmdir random-folder
+
+                C:\Users\jaque\Documents\CodingNomads\Terminal_testing
+                λ ls -al
+                total 8
+                drwxr-xr-x 1 jaque 197609 0 Oct 10 23:55 ./
+                drwxr-xr-x 1 jaque 197609 0 Oct 10 23:26 ../
+                -rw-r--r-- 1 jaque 197609 0 Oct 10 23:48 test-file-1.txt
+                -rw-r--r-- 1 jaque 197609 0 Oct 10 23:48 test-file-2.txt
      9. CHALLENGE:
          a. Use $ vim to write some text inside a file
+            Jackie typed: vim test-file-1.txt
+                    (to add the writing, I selected 'i'. esc to stop writing. :wq to save and quit the vim editor.
          b. Use $ cat print contents of file
+            Jackie typed: C:\Users\jaque\Documents\CodingNomads\Terminal_testing
+                    λ cat test-file-1.txt
+                    This is me typing some text in a file. Super duper pretty text!
          c. Use $ grep to search for a word inside file
+            Jackie typed:
+                    C:\Users\jaque\Documents\CodingNomads\Terminal_testing
+                    λ grep pretty test-file-1.txt
+                    This is me typing some text in a file. Super duper pretty text!
+
+
 
 Example Output (pwd):
     1. Cadens-MacBook-Pro:CodingNomads cadenmackenzie$ pwd
