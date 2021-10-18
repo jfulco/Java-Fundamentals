@@ -4,26 +4,77 @@
 
 Initializing git folder
     1. In CodingNomads folder, create new folder git_practice
+            Jackie typed: C:\Users\jaque\Documents\CodingNomads
+                          λ mkdir git_practice
     2. Inside git_practice:
         a. Initialize folder as a git folder (make sure you are in the correct folder when initializing) by running
             the "git init" command within the git_practice folder.
+            Jackie: C:\Users\jaque\Documents\CodingNomads\git_practice
+                    λ git init
+                    Initialized empty Git repository in C:/Users/jaque/Documents/CodingNomads/git_practice/.git/
         b. Make new file
+        Jackie: C:\Users\jaque\Documents\CodingNomads\git_practice (master)
+                λ touch new-git-practice-file.txt
         c. Add file
+        Jackie : C:\Users\jaque\Documents\CodingNomads\git_practice (master)
+                λ git add new-git-practice-file.txt
+
+                C:\Users\jaque\Documents\CodingNomads\git_practice (master)
+                λ git status
+                On branch master
+
+                No commits yet
+
+                Changes to be committed:
+                  (use "git rm --cached <file>..." to unstage)
+                        new file:   new-git-practice-file.txt
         d. Commit file
+        C:\Users\jaque\Documents\CodingNomads\git_practice (master)
+        λ git commit new-git-practice-file.txt "Fundamentals Exercise 02 txt."
+
+        [master (root-commit) d39f9ce] Creating and commiting file for fundamentals, Exercise 02 txt.
+         1 file changed, 0 insertions(+), 0 deletions(-)
+         create mode 100644 new-git-practice-file.txt
+
         c. On Github, create new git_practice repository
+        https://github.com/jfulco/git_practice.git
         d. Add this new GitHub repository as a new "remote" to your local Git repo. You can do this by using the command
             git remote add <ANY_NAME> <URL_OF_NEW_GITHUB_REPO.git>
+          Jackie: C:\Users\jaque\Documents\CodingNomads\git_practice (master)
+                    λ git remote add g-remote https://github.com/jfulco/git_practice.git
+                    C:\Users\jaque\Documents\CodingNomads\git_practice (master)
+                    λ git remote -v
+                    g-remote        https://github.com/jfulco/git_practice.git (fetch)
+                    g-remote        https://github.com/jfulco/git_practice.git (push)
         d. Push commit file to Github
+        C:\Users\jaque\Documents\CodingNomads\git_practice (master)
+        λ git push g-remote master
+        Enumerating objects: 3, done.
+        Counting objects: 100% (3/3), done.
+        Delta compression using up to 16 threads
+        Compressing objects: 100% (2/2), done.
+        Writing objects: 100% (3/3), 263 bytes | 131.00 KiB/s, done.
+        Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+        To https://github.com/jfulco/git_practice.git
+         * [new branch]      master -> master
+
         e. Practice the following git flow until you feel comfortable:
             i.   Create or modify file
+            touch filename.extension
             ii.  Add file(s)
+            git add filename.extension
+            git status (check to make sure files are on the stage)
             iii. Commit file(s)
+            git commit filename.extension "Reason for commit"
             iv.  Push file(s) to Github repository
+            git push <repo nickname> master
 
-Adding a remote
+Adding a remote (
     1. Create new personal repository on Github named "git_practice_2".
+    https://github.com/jfulco/git_practice_2.git
     2. On local machine, add the new remote address to the same git repo you were working with in the previous section above
-        (directions are provided on Github with new repo is created)
+        (directions are provided on Github with new repo is created) (Jackie: I DON'T UNDERSTAND WHAT THIS WANTS ME TO DO)
+       git remote add g-remote-2 https://github.com/jfulco/git_practice_2.git
     3. Push local git repository to your Github using the new remote.
 
 Cloning repository from Github

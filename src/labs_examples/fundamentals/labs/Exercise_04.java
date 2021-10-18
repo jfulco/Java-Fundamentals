@@ -17,6 +17,7 @@ public class Exercise_04 {
 
         int i = 1;
         System.out.println("int i is: " + i);
+
         System.out.println("Primitive Data Type codes declared and executed by Jackie!");
         boolean isEmpty = false;
         System.out.println("boolean isEmpty is: "  + isEmpty);
