@@ -23,7 +23,8 @@ public class Exercise_07 {
         // assign input to variable as int
         int days = scanner.nextInt();
 
-        // write completed code here
+        days *= 86400;
+        System.out.println("The number of days is equal to " + days + " seconds");
 
     }
 }

@@ -10,7 +10,17 @@ class ArithmeticOperators {
 
     public static void main(String[] args) {
 
-        // write your code below
+        int intValA = 16 + 13;
+        int intValB = 68 - 13;
+        double doubleValA = 1236985.122 * 13;
+        double doubleValB = 698746.43231 / 13;
+        int intValC = 83 % 10;
+
+        System.out.println("intValA = " + intValA);
+        System.out.println("intValB = " + intValB);
+        System.out.println("doubleValA = " + doubleValA);
+        System.out.println("doubleValB = " + doubleValB);
+        System.out.println("intValC = " + intValC);
 
     }
 
