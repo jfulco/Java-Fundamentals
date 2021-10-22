@@ -22,8 +22,20 @@ public class Exercise_01 {
         System.out.print("Enter a number between 1 and 1,000,000,000 to determine whether it is odd or even: ");
         // assign input to variable as int
         int number = scanner.nextInt();
-
-        // write completed code here
+        if (number % 2 == 0) {
+            System.out.println("The number you entered is even");
+        }
+            else {
+            System.out.println("The number you entered is odd");
+        }
+            //Playing more with if, else if, and else coding
+        if (number % 3 == 0) {
+            System.out.println("The number you entered is divisible by 3");
+        } else if (number % 5 == 0){
+            System.out.println("The number you entered is divisible by 5");
+        } else {
+            System.out.println("The number you entered is not divisible by 3 or 5");
+        }
 
     }
 }
