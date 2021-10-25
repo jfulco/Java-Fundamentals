@@ -1,4 +1,5 @@
 package labs_examples.conditions_loops.labs;
+import java.util.Scanner;
 
 /**
  * Conditions and Loops Exercise 5: Calculator
@@ -16,4 +17,26 @@ package labs_examples.conditions_loops.labs;
  */
 
 public class Exercise_05 {
+    public static void main(String[] args) {
+        Scanner scanOne = new Scanner(System.in);
+        System.out.println("Enter a number between 1 and 100: ");
+        double lowerBound = scanOne.nextInt();
+
+        Scanner scanTwo = new Scanner(System.in);
+        System.out.println("Enter another number between 1 and 100: ");
+        double upperBound = scanTwo.nextInt();
+
+        double sum = 0;
+        double totalNum = upperBound - lowerBound + 1;
+        System.out.println("The total number of values between the lowerBound and upperBound is " + totalNum);
+
+        for (double i = lowerBound; i <= upperBound; i++) {
+            sum += i;
+        }
+        System.out.println("The sum of all values between " + lowerBound + " and " + upperBound + " is " + sum);
+        double average = sum / totalNum;
+        System.out.println("The average of all values between " + lowerBound + " and " + upperBound + " is " + average);
+    }
 }
+
+
