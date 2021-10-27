@@ -25,5 +25,11 @@ class MinMax {
                 max = nums[i];
         }
         System.out.println("min and max: " + min + " " + max);
+        System.out.println("________________________________________");
+        for (int i = 0; i < nums.length; i++) {
+            if (i == 5) {
+                System.out.println(nums[i]);
+            }
+        }
     }
 }
