@@ -14,30 +14,25 @@ import java.util.Scanner;
 public class Exercise_01 {
     public static void main(String[] args) {
         Scanner inputOne = new Scanner(System.in);
-        Scanner inputTwo = new Scanner(System.in);
-        Scanner inputThree = new Scanner(System.in);
-        Scanner inputFour = new Scanner(System.in);
-        Scanner inputFive = new Scanner(System.in);
-        Scanner inputSix = new Scanner(System.in);
-        Scanner inputSeven = new Scanner(System.in);
-        Scanner inputEight = new Scanner(System.in);
-        Scanner inputNine = new Scanner(System.in);
-        Scanner inputTen = new Scanner(System.in);
+
 
         System.out.print("Type 10 numbers between 0 to 100, hitting 'Enter' after each number: ");
         System.out.println();
 
         int [] vals = new int[10];
-        vals[0] = inputOne.nextInt();
-        vals[1] = inputTwo.nextInt();
-        vals[2] = inputThree.nextInt();
-        vals[3] = inputFour.nextInt();
-        vals[4] = inputFive.nextInt();
-        vals[5] = inputSix.nextInt();
-        vals[6] = inputSeven.nextInt();
-        vals[7] = inputEight.nextInt();
-        vals[8] = inputNine.nextInt();
-        vals[9] = inputTen.nextInt();
+        for (int i = 0; i < vals.length; i++){
+            vals[i] = inputOne.nextInt();
+        }
+      //  vals[0] = inputOne.nextInt();
+        //vals[1] = inputOne.nextInt();
+//        vals[2] = inputOne.nextInt();
+//        vals[3] = inputOne.nextInt();
+//        vals[4] = inputOne.nextInt();
+//        vals[5] = inputOne.nextInt();
+//        vals[6] = inputOne.nextInt();
+//        vals[7] = inputOne.nextInt();
+//        vals[8] = inputOne.nextInt();
+//        vals[9] = inputOne.nextInt();
 
         System.out.println("Now lets find the sum of ALL the values you entered.");
         int sum = 0;
