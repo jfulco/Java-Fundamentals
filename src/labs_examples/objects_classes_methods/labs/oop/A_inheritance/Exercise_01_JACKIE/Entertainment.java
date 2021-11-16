@@ -2,34 +2,25 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance.Exercise_01
 
 
 public class Entertainment {
+    //instance variables
     protected String productionStudioName;
     protected String title;
     protected int releaseDate;
     protected double budget;
 
-
+    //methods
     public Entertainment(String productionStudioName, String title, int releaseDate, double budget) {
         this.productionStudioName = productionStudioName;
         this.title = title;
         this.releaseDate = releaseDate;
-        this.budget = budget/1000000;
+        this.budget = budget;
     }
-    public static void studioRanking(String productionStudioName){
-        switch (productionStudioName) {
-            case "Warner Brothers":
-                System.out.println(productionStudioName + " is rated #1 best movie studio in the US.");
-                break;
-            case "Walt Disney Pictures":
-                System.out.println(" is rated #2 best movie studio in the US.");
-                break;
-            case "20th Century Studios":
-                System.out.println(" is rated #3 best movie studio in the US.");
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + productionStudioName);
 
-        }
+    public void studioRanking(String productionStudioName){
+        System.out.println("This studio is not ranked");
     }
+
+    //Getter & Setters
 
     public String getProductionStudioName() {
         return productionStudioName;

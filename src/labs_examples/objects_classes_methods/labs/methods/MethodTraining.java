@@ -64,10 +64,13 @@ public class MethodTraining {
 
 
 //8. Reverse an array in place using only one extra temp variable
-        System.out.println("//8. Reverse an array in place using only one extra temp variable");
-        System.out.println("_____________________________________________");
-    }
+//        System.out.println("//8. Reverse an array in place using only one extra temp variable");
+//        System.out.println("_____________________________________________");
+//     reverseArray(int[] = {2, 3, 4, 6})
+//        System.out.println(reverseArray();
+//    }
 
+    }
     //METHODS CREATED BY JACKIE:
 
 
@@ -166,17 +169,30 @@ public class MethodTraining {
         }
         return variable;
     }
-}
+
 
 //8. Reverse an array in place using only one extra temp variable
 
-//    static ArrayList<Integer> reverseArray (int val1, int val2, int val3){
-//
-//
-//
-//    }
-//
-//
-//}
+    static int[] reverseArray(int[] nums) {
+        int temp;
+        int end = nums.length - 1;
+
+        // Question: in the for loop below, why do we divide "nums.length" by 2?
+        for (int i = 0; i < nums.length / 2; i++, end--) {
+            temp = nums[i];
+            nums[i] = nums[end];
+            nums[end] = temp;
+        }
+        return nums;
+    }
+}
+
+
+
+
+
+
+
+
 
 

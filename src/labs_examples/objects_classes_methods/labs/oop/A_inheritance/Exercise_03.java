@@ -3,7 +3,8 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 /**
  * Why does the output print in the order it does?
  *
- * You answer:
+ * You answer: C_1 class is extends B_1, which extends A_1. Through inheritance, the contents of A_1
+ * and B_1 are printed first and then the contents of C are printed.
  *
  */
 

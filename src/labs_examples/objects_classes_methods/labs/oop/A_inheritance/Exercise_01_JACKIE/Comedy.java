@@ -30,4 +30,6 @@ public class Comedy extends Movie {
     public void setRomantic(boolean romantic) {
         isRomantic = romantic;
     }
+
+    
 }

@@ -15,7 +15,7 @@ public class Exercise_01 {
         System.out.println("18 divided by 9 is " + divide(18, 9));
         System.out.println("It's been " + years(2021) + " seconds since the first day of the AD calendar structure.");
         String word = "Apple";
-        System.out.println("The lenght of the VarArgs array is: " + varArgsMethod(12, 13, 14, 15, 16, 12));
+        System.out.println("The length of the VarArgs array is: " + varArgsMethod(12, 13, 14, 15, 16, 12));
     }
 
 

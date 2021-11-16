@@ -1,7 +1,11 @@
 
 Without running the code below, please tell me what will print. Why?
 
+Parent called
+Child called
 
+Because all that we do is create the object, which calls both default constructors of the Parent and Child classes.
+The variable type (Parent) is called first and then the object type (Child)
 
 
 public class InheritanceTest

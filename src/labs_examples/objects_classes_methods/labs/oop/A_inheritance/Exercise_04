@@ -1,6 +1,14 @@
 
 Without running the code below, please tell me what it will print.
 
+Parent Called (original answer)
+
+___________
+Wrong - child was called first. Why?
+
+Updated answer: The child class is called first because the method c.doSomething()
+takes on the one of the object type, not the variable type?
+
 
 
 public class InheritanceTest
@@ -22,8 +30,13 @@ class Parent
 
 class Child extends Parent
 {
+//Overrides parent doSomething method
   public void doSomething()
   {
     System.err.println("Child called");
+  }
+
+  public void doSomethingElse(){
+      System.err.println("Child called something else");
   }
 }
