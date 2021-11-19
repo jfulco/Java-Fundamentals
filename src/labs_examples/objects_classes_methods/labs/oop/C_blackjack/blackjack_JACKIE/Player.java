@@ -2,7 +2,7 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack.blackjack_JAC
 
 public class Player {
     private String name;
-    private Hand hand;
+    private Hand hand = new Hand();
     private int potValue;
 
     //constructors
@@ -14,7 +14,7 @@ public class Player {
     }
 
     //methods
-    public boolean computerAI() {
+    public boolean computerAI(Player computerPlayer) {
         boolean anotherCard;
 
         if (this.hand.getHandValue() < 16) { //If the computer's hand value is less than 16, set anotherCard to true.

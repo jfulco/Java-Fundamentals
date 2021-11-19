@@ -9,8 +9,9 @@ public class Hand {
     public Hand() {
     }
 
-    public Hand(ArrayList<Card> cards) {
+    public ArrayList<Card> Hand(ArrayList<Card> cards) {
         this.cards = cards;
+        return cards;
     }
 
     //methods
@@ -21,9 +22,6 @@ public class Hand {
             int value = cards.get(i).valueOfCard();
             handValue += value;     //add the value of the card to handValue;
         }
-
-
-
 //        for() how to constructor for each to make for loop better ^^^^^^^^^^^^^^^^^^^
         return handValue;           //return the handvalue when the method score is called
     }
@@ -40,8 +38,11 @@ public class Hand {
         return cards;
     }
 
+
     public void addCard(Card card) {
+
         cards.add(card);
+
     }
 
     public int getHandValue() {
