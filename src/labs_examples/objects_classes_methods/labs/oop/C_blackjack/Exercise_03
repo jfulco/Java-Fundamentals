@@ -5,7 +5,8 @@ out questions and using a Scanner to get answers. First, create two Player objec
 
 2) After you have created both players, deal them each two cards from the deck. These cards should be added to the
 players "hand" objects. Print the two cards the user received and their current hand value to the console and ask them
-if they want another card. If they say "yes" to another card, deal them another card and print out all their cards and
+if they want another card. If they say "yes" to another card, deal them anot
+her card and print out all their cards and
 their hand value again. Then call the computerAi method to determine whether or not the computer wants another card.
 Print out whether the computer took another card or not. Repeat this process (asking for another card and dealing0 doing
 this until both the user and the computer say "no" to another card, or until both players hand value is over 21.

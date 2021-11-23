@@ -15,7 +15,7 @@ public class Hand {
     }
 
     //methods
-    public int score() {
+    public int getHandValue() {
         handValue = 0;
         for (int i = 0; i < cards.toArray().length; i++) { //iterate through the indexes of the cards ArrayList
             // (which is just a bunch of Card objects that all have access to the valueOfCard method)
@@ -26,7 +26,8 @@ public class Hand {
         return handValue;           //return the handvalue when the method score is called
     }
 
-    public boolean isHandOver21(){          //True or false, is handValue greater than 21 or less than 21?
+    public boolean isHandOver21(){
+        this.handValue = handValue;//True or false, is handValue greater than 21 or less than 21?
         if (handValue > 21){
             return true;
         } else {
@@ -45,9 +46,6 @@ public class Hand {
 
     }
 
-    public int getHandValue() {
-        return handValue;
-    }
 
     public void setHandValue(int handValue) {
         this.handValue = handValue;
