@@ -1,9 +1,9 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop.oop_JACKIE;
 
 public class Tool {
-    String tags;
-    String subTags;
-    String userRole;
+    String tags; //array list of tags, to freely add and get rid of them
+    String subTags; //array list of subtags (for now)
+    String userRole; // make an int
     double costPerUser;
     int academicTechRating;
     String colleges;

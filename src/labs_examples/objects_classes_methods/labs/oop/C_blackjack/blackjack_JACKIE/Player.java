@@ -51,11 +51,15 @@ public class Player {
         return potValue;
     }
 
-    public void getPotValue(){
+    public int getPotValue(int computerBet, int playerBet){
         this.computerBet = computerBet;
         this.playerBet = playerBet;
         potValue = computerBet + playerBet;
-        System.out.println("Currently, the pot value is: $" + potValue);
+        return potValue;
+    }
+
+    public int getPotValue(){
+        return potValue;
     }
 
 
