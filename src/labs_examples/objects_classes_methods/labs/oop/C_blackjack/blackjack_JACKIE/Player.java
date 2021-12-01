@@ -4,7 +4,7 @@ public class Player {
     private String name;
     private Hand hand = new Hand();
     private int potValue = 0;
-    private int computerBet=0;
+    private int computerBet = 0;
     private int playerBet = 0;
 
     //constructors
@@ -38,13 +38,19 @@ public class Player {
         return wantsAnotherCard;
     }
 
-    public int computerBets(Player computerPlayer) {
-        int min = 0;
-        int max = 500;
-        computerBet = (int) Math.floor(Math.random() * (max - min + 1) + min);
-        potValue += computerBet;
-        return potValue;
+    public boolean computerMatchBet(Player computerPlayer, int playerBet) {
+        this.playerBet = playerBet;
+        boolean matchBet;
+        if (this.hand.getHandValue() > 0 & this.hand.getHandValue() <= 21 && playerBet <= 500){
+            matchBet = true;
+            System.out.println("The computer matched your bet!");
+        } else {
+            matchBet = false;
+            System.out.println("The computer did not bet on this round.");
+        }
+        return matchBet;
     }
+
 
     public int addPlayerBetToPot(int playerBet) {
         potValue += playerBet;

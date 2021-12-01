@@ -29,8 +29,12 @@ public class BlackjackController {
 
         System.out.print(name + ", how much do you want to bet on the first round? $");
         int playerBet = newPlayerInput.nextInt();
-        int computerBet = computerPlayer.computerBets(computerPlayer);
-        System.out.println("The computer bets: $" + computerBet);
+        int computerBet;
+        if (computerPlayer.computerMatchBet(computerPlayer, playerBet)){
+            computerBet = playerBet;
+        } else {
+            computerBet = 0;
+        }
         System.out.println("The current pot value is: " + newPlayer.getPotValue(computerBet, playerBet));
         System.out.println("Do you want another card, " + name + "?");
         String anotherCard = newPlayerInput.next();
@@ -53,8 +57,11 @@ public class BlackjackController {
             } else if (!newPlayer.getHand().isHandOver21()) {
                 System.out.println(name + ", how much more do you want to bet? $");
                 playerBet += newPlayerInput.nextInt();
-                computerBet += computerPlayer.computerBets(computerPlayer);
-                System.out.println("The computer bets: $" + computerBet);
+                if (computerPlayer.computerMatchBet(computerPlayer, playerBet)){
+                    computerBet = playerBet;
+                } else {
+                    computerBet = 0;
+                }
                 System.out.println("The current pot value is: " + newPlayer.getPotValue(computerBet, playerBet));
                 System.out.println("Do you want another card, " + name + "?");
                 anotherCard = newPlayerInput.next();

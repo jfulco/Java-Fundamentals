@@ -22,8 +22,7 @@ public class Hand {
             int value = cards.get(i).valueOfCard();
             handValue += value;     //add the value of the card to handValue;
         }
-//        for() how to constructor for each to make for loop better ^^^^^^^^^^^^^^^^^^^
-        return handValue;           //return the handvalue when the method score is called
+        return handValue;           //return the handvalue when the method is called
     }
 
     public boolean isHandOver21(){
