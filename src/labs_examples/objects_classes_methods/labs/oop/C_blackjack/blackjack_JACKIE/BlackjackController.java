@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class BlackjackController {
     public static void main(String[] args) {
+        for(int i = 0; i < Card.suits.length; i++){
+            System.out.println(Card.suits[i]);
+        }
         playBlackJack();
 
     }

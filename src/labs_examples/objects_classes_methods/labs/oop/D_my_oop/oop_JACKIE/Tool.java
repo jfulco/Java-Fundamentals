@@ -1,47 +1,33 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop.oop_JACKIE;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Tool {
-    String[] tags = new String[]{"Analytics & Statistics", "Communication", "Content Delivery", "Simulation", "STEM", "Visual"}; //array list of tags, to freely add and get rid of them
+    String name;
+    String tags; //0 = Analytics & Statistics, 1 = Communication, 2 = Content Delivery, 3 = Simulation, 4 = STEM, 5 = Visual
+    ArrayList<String> subTags;
     int tagCounter;
-    String toolName;
-    String[] subTags = new String[]{"Discussions"};
-    String userRole; // make an int
+    int subTagCounter;
+    int userRole; // 0 = Student, 1 = Faculty, 2 = Staff, 3 = All
     double costPerUser;
     int academicTechRating;
     String colleges;
 
-    public Tool(String[] subTags, String userRole, double costPerUser, int academicTechRating, String colleges, String[] tags) {
-        this.subTags = subTags;
-        this.userRole = userRole;
-        this.costPerUser = costPerUser;
-        this.academicTechRating = academicTechRating;
-        this.colleges = colleges;
+    public Tool(String name, String tags, int userRole) {
+        this.name = name;
         this.tags = tags;
     }
 
     public Tool() {
     }
 
-    public static void tagDescription(){
-
+    @Override
+    public String toString() {
+        return name;
     }
 
 
-    public void getMoreInfo(String userInput){
-        if (userInput.equalsIgnoreCase("Y")) {
-            System.out.println("************Eventually, this will return paragraphs about the tools");
-            return;
-        }
-    }
-
-    public String getTags() {
-        return Arrays.toString(tags);
-    }
-
-
-    public String getSubTags() {
-        return  "subTags=" + Arrays.toString(subTags);
-    }
+    //    public String getSubTags() {
+//        return  "subTags=" + Arrays.toString(new String[]{subTags});
+//    }
 }

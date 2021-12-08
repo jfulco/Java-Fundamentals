@@ -1,10 +1,10 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack.blackjack_JACKIE;
 
 public class Card {
-    private char[] suits = new char[]{'♠', '♦', '♥', '♣'};
+    static char[] suits = new char[]{'♠', '♦', '♥', '♣'};
     private int suit;
     private int cardValue;
-    private String[] face = new String[]{"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+    static String[] face = new String[]{"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
     int score;
 
     //getter & setters
@@ -74,7 +74,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return suits[this.suit] + " | " + face[this.cardValue];
+        return Card.suits[this.suit] + " | " + Card.face[this.cardValue];
     }
 
     //methods
