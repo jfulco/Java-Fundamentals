@@ -1,7 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack.blackjack_JACKIE;
 
 public class Player {
-    private String name;
+    static private String name;
     private Hand hand = new Hand();
     private int potValue = 0;
     private int computerBet = 0;

@@ -3,7 +3,7 @@ package labs_examples.objects_classes_methods.labs.oop.C_blackjack.blackjack_JAC
 import java.util.ArrayList;
 
 public class Deck {
-    private Card[] deck = new Card[52];
+    static private Card[] deck = new Card[52];
     private ArrayList<Integer> usedCards = new ArrayList<Integer>();
 
     //getters & setters

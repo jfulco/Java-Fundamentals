@@ -1,6 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop.oop_JACKIE;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Services {
@@ -79,26 +80,26 @@ public class Services {
                 System.out.println("\n\tAll tools are organized in the following categories: ");
                 MasterList.referenceTagsList();
                 System.out.print("\tDo want to learn more about each category? Enter Y or N. ");
-                        learnMore = userInput.next();
-                        if (learnMore.equalsIgnoreCase("Y")) { //if user says Y, return summary of each category
+                        learnMore = userInput.next().toUpperCase(Locale.ROOT);
+
+                        if (learnMore.equals("Y")) { //if user says Y, return summary of each category
                             MasterList.getMoreInfoTags();
-                            break;
-                        } else if (learnMore.equalsIgnoreCase("N")){
-                            break;
-                        } else if (!learnMore.equalsIgnoreCase("Y") || !learnMore.equalsIgnoreCase("N")) { //if the user enters something other than Y or N
+                        } else if (!learnMore.equals("N")) { //if the user enters something other than Y or N
                             do {
                                 System.out.println("\tInvalid Response. Try again: ");
                                 learnMore = userInput.next();
-                                if (learnMore.equalsIgnoreCase("Y")) { //if user says Y, return summary of each category
+                                if (learnMore.equals("Y")) { //if user says Y, return summary of each category
                                     MasterList.getMoreInfoTags();
                                     break;
-                                } else if (learnMore.equalsIgnoreCase("N")){
+                                } else if (learnMore.equals("N")){
                                     break;
                                 }
                             } while (true);
                         }
+
+
                 System.out.print("\tEnter the category (0 - 5) that best describes what you're looking for: ");
-                selectTag = userInput.nextInt();
+                selectTag = userInput.nextInt(); // put in a loop
 
                 //ask what sub categories (What works for now)
                 System.out.println("\n\tThere are several sub categories a tool can have.");
@@ -182,34 +183,35 @@ public class Services {
     }
 
     public static void analyzeUserDecision(int userRole, int selectTag, int selectSubTags) {
-        ArrayList<ArrayList<Tool>> temporaryList = new ArrayList<>();
+        ArrayList<Tool> temporaryList = new ArrayList<>();
 
         if (userRole == 0) {
-            if (selectTag == 0) {
-                temporaryList.add(MasterList.analyticsStatisticsTools);
-            } else if (selectTag == 1) {
-                temporaryList.add(MasterList.communicationTools);
-            } else if (selectTag == 2) {
-                temporaryList.add(MasterList.contentDeliveryTools);
-            } else if (selectTag == 3) {
-                temporaryList.add(MasterList.simulationTools);
-            } else if (selectTag == 4) {
-                temporaryList.add(MasterList.stemTools);
-            } else if (selectTag == 5) {
-                temporaryList.add(MasterList.visualTools);
-            }
-            temporaryList.add(MasterList.studentTools);
+            temporaryList.addAll(MasterList.studentTools);
         } else if (userRole == 1) {
-            temporaryList.add(MasterList.facultyTools);
+            temporaryList.addAll(MasterList.facultyTools);
         } else if (userRole == 2) {
-            temporaryList.add(MasterList.staffTools);
+            temporaryList.addAll(MasterList.staffTools);
         } else if (userRole == 3) {
-            temporaryList.add(MasterList.allUsersTools);
+            temporaryList.addAll(MasterList.allUsersTools);
+        }
 
+            if (selectTag == 0) {
+                temporaryList.addAll(MasterList.analyticsStatisticsTools);
+            } else if (selectTag == 1) {
+                temporaryList.addAll(MasterList.communicationTools);
+            } else if (selectTag == 2) {
+                temporaryList.addAll(MasterList.contentDeliveryTools);
+            } else if (selectTag == 3) {
+                temporaryList.addAll(MasterList.simulationTools);
+            } else if (selectTag == 4) {
+                temporaryList.addAll(MasterList.stemTools);
+            } else if (selectTag == 5) {
+                temporaryList.addAll(MasterList.visualTools);
+            }
 
             //to use subtags user input, search for subtags in tool object?
-        }
-        for (ArrayList<Tool> all : temporaryList) {
+
+        for (Tool all : temporaryList) {
             System.out.println(all);
         }
     }
