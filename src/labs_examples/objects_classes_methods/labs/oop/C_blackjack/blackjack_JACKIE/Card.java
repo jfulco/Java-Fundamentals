@@ -1,7 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack.blackjack_JACKIE;
 
 public class Card {
-    static char[] suits = new char[]{'♠', '♦', '♥', '♣'};
+    static char[] suits = new char[]{'\u2660', '\u2666', '\u2665', '\u2663'};
     private int suit;
     private int cardValue;
     static String[] face = new String[]{"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
