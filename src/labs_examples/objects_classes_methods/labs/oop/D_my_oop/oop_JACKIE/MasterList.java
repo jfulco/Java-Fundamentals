@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class MasterList {
     int tagsCounter;
     int subTagsCounter;
-    private static String[] tagsList = new String[]{"Analytics & Statistics", "Communication", "Content Delivery", "Simulation", "STEM", "Visual"}; //keep as an array
+    static String[] tagsList = new String[]{"Analytics & Statistics", "Communication", "Content Delivery", "Simulation", "STEM", "Visual"}; //keep as an array
     static String[] subTagsList = new String[]{"Discussions", "Presentations", "VR Technology", "Databases", "Cyber Security", "Mindmapping"}; //needs to be made an array list for scalability
-    static String[] userRoleList = new String[]{"Student", "Faculty", "Staff", "All Users"}; //keep as an array
+    static String[] userRoleList = new String[]{"Student", "Faculty", "Staff", "All Users"}; //keep as an array, 0 1 2 3
     static ArrayList<Tool> allTools = new ArrayList<Tool>();
     static ArrayList<Tool> analyticsStatisticsTools = new ArrayList<Tool>();
     static ArrayList<Tool> communicationTools = new ArrayList<Tool>();
@@ -32,8 +32,8 @@ public class MasterList {
     }
 
     public static void referenceSubTagsList() { //cycles through sub tags list array and returns them; used for referencing, not manipulating
-        for (int i = 0; i < subTagsList.length; i++) {
-            System.out.println("\t\t" + i +  " = " + subTagsList[i]);
+        for (int i = 0; i < getSubTagsList().length; i++) {
+            System.out.println("\t\t" + i +  " = " + getSubTagsList()[i]);
         }
     }
 
@@ -42,7 +42,7 @@ public class MasterList {
     }
 
     public static String getSubTagsList(int i) { //gets a value from the tags list at a certain index, used for manipulating
-        return subTagsList[i];
+        return getSubTagsList()[i];
     }
 
     public static String getUserRoleList(int i) { //gets a value from the user role list at a certain index, used for manipulating
@@ -131,5 +131,13 @@ public class MasterList {
         for (Tool all : visualTools) {
             System.out.println(all);
         }
+    }
+
+    public static String[] getSubTagsList() {
+        return subTagsList;
+    }
+
+    public static void setSubTagsList(String[] subTagsList) {
+        MasterList.subTagsList = subTagsList;
     }
 }

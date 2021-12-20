@@ -1,8 +1,12 @@
 package labs_examples.objects_classes_methods.labs.oop.D_my_oop.oop_JACKIE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
+
+import static labs_examples.objects_classes_methods.labs.oop.D_my_oop.oop_JACKIE.MasterList.subTagsList;
+import static labs_examples.objects_classes_methods.labs.oop.D_my_oop.oop_JACKIE.MasterList.tagsList;
 
 public class Services {
     static String learnMore;
@@ -209,7 +213,11 @@ public class Services {
                 temporaryList.addAll(MasterList.visualTools);
             }
 
+
+
+
             //to use subtags user input, search for subtags in tool object?
+
 
         for (Tool all : temporaryList) {
             System.out.println(all);

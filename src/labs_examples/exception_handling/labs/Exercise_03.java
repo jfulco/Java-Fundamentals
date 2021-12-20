@@ -1,5 +1,6 @@
 package labs_examples.exception_handling.labs;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -11,6 +12,7 @@ import java.util.Scanner;
 class someClass2 {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
+        System.out.println("Let's test divisibility of numbers.");
         System.out.println("Enter an integer 0 to 50:");
         int a = userInput.nextInt();
         System.out.println("Enter an integer 0 to 5");
