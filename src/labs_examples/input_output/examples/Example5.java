@@ -22,13 +22,13 @@ class CopyFile {
         String fileReadPath = "src/labs_examples/input_output/files/char_data.txt";
         String fileWritePath = "src/labs_examples/input_output/files/char_data_rewrite.txt";
 
-        FileInputStream fin = null;
+        FileInputStream fin = null; //identifies an object, but doesn't create it.
         FileOutputStream fout = null;
 
         // Copy a File.
         try {
             // Attempt to open the files.
-            fin = new FileInputStream(fileReadPath);
+            fin = new FileInputStream(fileReadPath); //creates the object
             fout = new FileOutputStream(fileWritePath);
 
             do {
@@ -43,7 +43,7 @@ class CopyFile {
             System.out.println("I/O Error: " + exc);
         } finally {
             try {
-                if(fin != null) {
+                if(fin != null) { //if we created an object
                     fin.close();
                 }
             } catch(IOException exc) {

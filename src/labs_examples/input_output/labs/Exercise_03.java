@@ -1,5 +1,9 @@
 package labs_examples.input_output.labs;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 /**
  * Input/Output Exercise 3: variety
  *

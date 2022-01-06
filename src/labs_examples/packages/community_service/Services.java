@@ -5,7 +5,7 @@ import labs_examples.packages.employeeinfo.Person;
 import java.util.ArrayList;
 
 public class Services {
-    Person[] volunteerInfo = new Person[7];
+
 
     protected static float percentageOfWorkWeek(float volunteerHours) { //the controller can access this because its in the same package
         float quotient = volunteerHours / 40;

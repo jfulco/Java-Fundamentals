@@ -17,4 +17,10 @@ package labs_examples.interfaces.labs;
  *          playMusic() and turnOff().
  */
 
+public interface InterfaceExercise_01 {
+    public boolean start();
+    public void stop();
+    public void pause();
+}
+
 
