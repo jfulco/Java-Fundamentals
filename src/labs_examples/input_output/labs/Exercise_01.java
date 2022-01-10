@@ -27,7 +27,6 @@ class Example {
             int c;
 
         while ((c = bufferedIn.read()) != -1) {
-            // write the data (byte by byte) to the OutputStream "out"
             out.write(c);
 
         }

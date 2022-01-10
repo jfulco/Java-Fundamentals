@@ -66,21 +66,17 @@ class Exercise_02 {
             x = upperCase.apply(x);
 
 
-            if (x.equalsIgnoreCase().contains('a')) {
-            if (x.equalsIgnoreCase().contains('a')) {
-                    result = false;
-                    return result;
-                }
-                return result;
+            if (x.contains("A")) {
+               return true;
             }
+            return false;
         };
-
         System.out.println(containsLetterA.test("Emily"));
         System.out.println(containsLetterA.test("Jackie"));
-
-
+        System.out.println(containsLetterA.test("Nikki"));
     }
 }
+///Person object for #2
 
         class Person {
             String name;
