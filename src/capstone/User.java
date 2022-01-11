@@ -1,19 +1,20 @@
 package capstone;
 
 import java.io.*;
-import java.nio.Buffer;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class User {
+    Integer userID;
     String firstName;
     String lastName;
+    String emailAddress;
     double incomeMonthly;
     double oneTimeIncome;
     boolean hasHome;
     double priceHome;
     double homeInterestRate;
-    ArrayList<Debt> debtOwed = new ArrayList<>();
     double weeklyCostGroceries;
     double weeklyCostTakeOut;
     int numWeeklyTakeOut;
@@ -27,14 +28,18 @@ public class User {
     double monthlyTV;
     double monthlyCostTravel;
     double monthlySavings;
-    FileReader inputStream = null;
-    FileWriter outputStream = null;
-    String filePath = "src/capstone/account-info/" + firstName + "-" + lastName + ".txt";
+    double startingAccountBalance;
+    ArrayList<Debt> debtOwed = new ArrayList<>();
+    ArrayList<Account> allAccounts = new ArrayList<>();
+    //add monthlyRent as a parameter
+    //add Debt array as a parameter
+
 
     public User() {
     }
 
-    public User(String firstName, String lastName,
+
+    public User(String firstName, String lastName, String emailAddress,
                 double incomeMonthly, double oneTimeIncome,
                 boolean hasHome, double priceHome, double homeInterestRate,
                 ArrayList<Debt> debtOwed, double weeklyCostGroceries,
@@ -45,6 +50,7 @@ public class User {
                 double monthlyCostTravel, double monthlySavings) throws IOException {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.emailAddress = emailAddress;
         this.incomeMonthly = incomeMonthly;
         this.oneTimeIncome = oneTimeIncome;
         this.hasHome = hasHome;
@@ -64,212 +70,54 @@ public class User {
         this.monthlyTV = monthlyTV;
         this.monthlyCostTravel = monthlyCostTravel;
         this.monthlySavings = monthlySavings;
-        writeAccountInfoFile();
+        double totalMonthlyIncome = incomeMonthly + oneTimeIncome;
+        double totalMonthlyExpense = monthlyCostHealth + monthlyCostChildcare + monthlyCostCarInsurance
+                + monthlyCarPayment + monthlyGas + monthlyCellPhone + monthlyTV + monthlyCostTravel + monthlySavings + calculateMonthlyMortgageCost(priceHome, homeInterestRate);
+//        Account account = new Account(startingAccountBalance);
+//        account.accountBalance(incomeMonthly);
     }
 
-    public void writeAccountInfoFile() throws IOException {
-        try {
-            outputStream = new FileWriter("src/capstone/account-info/" + firstName + "-" + lastName + ".txt");
-            outputStream.write(firstName + "," + lastName + "," + incomeMonthly + "," + oneTimeIncome + "," + hasHome
-                    + "," + priceHome + "," + homeInterestRate + "," + debtOwed + "," + weeklyCostGroceries + "," + weeklyCostTakeOut
-                    + "," + numWeeklyTakeOut + "," + weeklyCostAlcohol + "," + monthlyCostHealth + "," + monthlyCostChildcare + ","
-                    + monthlyCostCarInsurance + "," + monthlyCarPayment + "," + monthlyGas + "," + monthlyCellPhone + "," + monthlyTV
-                    + "," + monthlyCostTravel + "," + monthlySavings);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (outputStream != null){
-                outputStream.close();
-            }
+    public double calculateMonthlyMortgageCost(double priceHome, double homeInterestRate){
+        return priceHome + (priceHome*(homeInterestRate/100));
+    }
+
+    public void monthlyAccountBalances(){
+        Scanner userInput = new Scanner(System.in);
+        Account account = new Account();
+        int userDecision;
+        this.monthlySavings = monthlySavings;
+        System.out.println("What would you like to view: ");
+        System.out.println("1) Checking Account" + "\n2) Savings Account");
+        userDecision = userInput.nextInt();
+        switch (userDecision){
+            case 1:
+                System.out.println("You currently have: " + account.getCurrentBalance());
+            case 2:
         }
     }
 
-    public void generateDebtOwed(Debt debt){
-
+    public void updateTotalDebtOwed(Debt debt){
+        debtOwed.add(debt);
     }
 
-    public void viewUserAccountInfo(User user, File userAccountInfo) throws FileNotFoundException {
-        System.out.println("Below is your current budget information:");
-        try (BufferedReader br = new BufferedReader(new FileReader(userAccountInfo))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                System.out.println("0) First Name: " + values[0] +
-                        "\n1) Last Name: " + values[1] +
-                        "\n2) Monthly Income: " + values[2] +
-                        "\n3) Extra/One-Time Income: " + values[3] +
-                        "\n4) Do you own a home? " + values[4] +
-                        "\n5) Price of Home: " + values[5] +
-                        "\n6) Mortgage Interest Rate: " + values[6] +
-                        "\n7) Do you owe any debt (credit cards, student loans, etc)?" + values[7] +
-                        "\n8) Weekly Cost for Groceries: " + values[8] +
-                        "\n9) Weekly Cost for Take-Out: " + values[9] +
-                        "\n10) On average, how many times a week do you get take-out? " + values[10] +
-                        "\n11) Weekly Cost for Alcohol (wine, beer, liquor): " + values[11] +
-                        "\n12) Monthly Healthcare Cost: " + values[12] +
-                        "\n13) Monthly Childcare Cost: " + values[13] +
-                        "\n14) Monthly Car Insurance Cost: " + values[14] +
-                        "\n15) Monthly Car Payment: " + values[15] +
-                        "\n16) Monthly Gas Cost: " + values[16] +
-                        "\n17) Monthly Cellphone Cost: " + values[17] +
-                        "\n18) Cost of Monthly TV/Streaming services (Netflix, Hulu, etc): " + values[18] +
-                        "\n19) Monthly Travel Cost: " + values[19] +
-                        "\n20) Monthly Savings: " + values[20]);
-            }
-            updateUserAccountInfo(user, userAccountInfo);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     //how do I make it replace the file instead of just creating a new one?
-    public void updateUserAccountInfo(User user, File userAccountInfo) throws FileNotFoundException {
-        Scanner userInput = new Scanner(System.in);
-        System.out.println("Do you need to update any information? (true or false)");
-        boolean wantsUpdate = userInput.nextBoolean();
-        while (wantsUpdate) {
-            System.out.println("What information would you like to update? (Enter 0 - 20)");
-            int userDecision = userInput.nextInt();
-            switch (userDecision) {
-                case 0:
-                    userAccountInfo.delete();
-                    System.out.println("Enter your change: ");
-                    setFirstName(userInput.next());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 1:
-                    userAccountInfo.delete();
-                    System.out.println("Enter your change: ");
-                    setLastName(userInput.next());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 2:
-                    System.out.println("Enter your change: ");
-                    setIncomeMonthly(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 3:
-                    System.out.println("Enter your change: ");
-                    setOneTimeIncome(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 4:
-                    System.out.println("Enter your change: ");
-                    setHasHome(userInput.nextBoolean());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 5:
-                    System.out.println("Enter your change: ");
-                    setPriceHome(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 6:
-                    System.out.println("Enter your change: ");
-                    setHomeInterestRate(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-//                case 7:
-//                    System.out.println("Enter your change: ");
-//                    setDebtOwed(userInput.nextInt());
-//                    System.out.println("Do you need to update more information? (true or false)");
-//                    wantsUpdate = userInput.nextBoolean();
-//                    continue;
-                case 8:
-                    System.out.println("Enter your change: ");
-                    setWeeklyCostGroceries(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 9:
-                    System.out.println("Enter your change: ");
-                    setWeeklyCostTakeOut(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 10:
-                    System.out.println("Enter your change: ");
-                    setNumWeeklyTakeOut(userInput.nextInt());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 11:
-                    System.out.println("Enter your change: ");
-                    setWeeklyCostAlcohol(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 12:
-                    System.out.println("Enter your change: ");
-                    setMonthlyCostHealth(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 13:
-                    System.out.println("Enter your change: ");
-                    setMonthlyCostChildcare(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 14:
-                    System.out.println("Enter your change: ");
-                    setMonthlyCostCarInsurance(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 15:
-                    System.out.println("Enter your change: ");
-                    setMonthlyCarPayment(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 16:
-                    System.out.println("Enter your change: ");
-                    setMonthlyGas(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 17:
-                    System.out.println("Enter your change: ");
-                    setMonthlyCellPhone(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 18:
-                    System.out.println("Enter your change: ");
-                    setMonthlyTV(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 19:
-                    System.out.println("Enter your change: ");
-                    setMonthlyCostTravel(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-                case 20:
-                    System.out.println("Enter your change: ");
-                    setMonthlySavings(userInput.nextDouble());
-                    System.out.println("Do you need to update more information? (true or false)");
-                    wantsUpdate = userInput.nextBoolean();
-                    continue;
-            }
-        }
-        try {
-            writeAccountInfoFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Controller.mainMenu(user, userAccountInfo);
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public void setFirstName(String firstName) {
@@ -356,16 +204,92 @@ public class User {
         this.monthlySavings = monthlySavings;
     }
 
-    public void setInputStream(FileReader inputStream) {
-        this.inputStream = inputStream;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setOutputStream(FileWriter outputStream) {
-        this.outputStream = outputStream;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public double getIncomeMonthly() {
+        return incomeMonthly;
+    }
+
+    public double getOneTimeIncome() {
+        return oneTimeIncome;
+    }
+
+    public boolean getHasHome() {
+        return hasHome;
+    }
+
+    public double getPriceHome() {
+        return priceHome;
+    }
+
+    public double getHomeInterestRate() {
+        return homeInterestRate;
+    }
+
+    public ArrayList<Debt> getDebtOwed() {
+        return debtOwed;
+    }
+
+    public double getWeeklyCostGroceries() {
+        return weeklyCostGroceries;
+    }
+
+    public double getWeeklyCostTakeOut() {
+        return weeklyCostTakeOut;
+    }
+
+    public int getNumWeeklyTakeOut() {
+        return numWeeklyTakeOut;
+    }
+
+    public double getWeeklyCostAlcohol() {
+        return weeklyCostAlcohol;
+    }
+
+    public double getMonthlyCostHealth() {
+        return monthlyCostHealth;
+    }
+
+    public double getMonthlyCostChildcare() {
+        return monthlyCostChildcare;
+    }
+
+    public double getMonthlyCostCarInsurance() {
+        return monthlyCostCarInsurance;
+    }
+
+    public double getMonthlyCarPayment() {
+        return monthlyCarPayment;
+    }
+
+    public double getMonthlyGas() {
+        return monthlyGas;
+    }
+
+    public double getMonthlyCellPhone() {
+        return monthlyCellPhone;
+    }
+
+    public double getMonthlyTV() {
+        return monthlyTV;
+    }
+
+    public double getMonthlyCostTravel() {
+        return monthlyCostTravel;
+    }
+
+    public double getMonthlySavings() {
+        return monthlySavings;
+    }
+
+    public double getStartingAccountBalance() {
+        return startingAccountBalance;
     }
 
     @Override
